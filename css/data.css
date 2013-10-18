@@ -1,0 +1,40 @@
+
+
+.body{
+    background-color: navajowhite;
+}
+.header
+{
+    background-color:deepskyblue;
+    border-radius: 0;
+    border: 10px solid navajowhite;
+}
+h1
+{
+    color:white;
+    text-align: center;
+}
+table
+{
+
+    border-color: red;
+}
+th{
+    background-color: greenyellow;
+}
+.even
+{
+    color: cyan;
+}
+.odd
+{
+  color: fuchsia;
+}
+.row
+{
+    color: red;
+}
+.form-signin
+{
+    max-width: 250px;
+}

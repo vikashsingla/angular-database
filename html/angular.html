@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <title>Use of angularjs</title>
+
+    <script src="/home/manusis/database angular/database angular/lib/angular/angular.min.js" ></script>
+    <script src="/home/manusis/database angular/database angular/js/data.js"></script>
+    <link href="/home/manusis/database angular/database angular/css/data.css" rel="stylesheet" media="screen" >
+    <link href="/home/manusis/database angular/database angular/css/bootstrap.min.css" rel="stylesheet" media="screen" >
+    <link href="/home/manusis/database angular/database angular/css/bootstrap.css" rel="stylesheet" media="screen" >
+</head>
+<body class="body" >
+  <div ng-controller="Controller">
+    <div id="header" class="header">
+    <h1><marquee> Create a New Account</marquee></h1>
+    </div>
+     <div class="container">
+    <form name="user" method="post" class="form-signin">
+        <label>First Name:</label><br>
+        <input type="text" ng-model="username" name="username" placeholder="Enter the Name" class="form-control" autofocus required>
+        <span class="error" ng-show="user.username.$error.required"></span><br>
+        <input type="hidden" ng-model="id"/>
+        <label>Last Name:</label><br>
+        <input type="text" ng-model="lastname" name="lastname" placeholder="Enter the Lastname" class="form-control"required>
+        <span class="error" ng-show="user.lastname.$error.required"></span><br>
+        <label>User Email: </label>  <br>
+        <input type="email" ng-model="useremail" name="useremail" placeholder="xxx@example.com" class="form-control"/>       <br>
+        <label>your current e-mail address:</label><br>
+        <input type="email" ng-model="usercemail"  name="usercemail" placeholder="xxx@example.com" class="form-control"/><br>
+        <label>password:</label>  <br>
+        <input type="password" ng-model="password" placeholder="password" class="form-control"required>
+        <span class="error" ng-show="user.username.$error.required"></span><br>
+        <label>Conform Your Password:</label>  <br>
+        <input type="password" ng-model="cpassword" placeholder="password" class="form-control" required>
+        <span class="error" ng-show="user.username.$error.required"></span><br>
+        <label>Birth Date:</label><br>
+        <input type="date" id="bday" ng-model="date" class="form-control"/> <br>
+        <label>Gender:</label><br>
+        <select ng-model="gender" class="form-control">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select><br>
+        <label>Multiple Checkboxes</label>  <br>
+        <input type="checkbox" ng-model="hobbies" ng-true-value="Dancing" ng-false-value="no"/>Dancing<br>
+        <input type="checkbox" ng-model="hobbies" ng-true-value="Playing" ng-false-value="no"/>Playing<br>
+        <input type="checkbox" ng-model="hobbies" ng-true-value="Singing" ng-false-value="no"/>Singing<br>
+ <div id="file-list"> <br>
+            <label><b>Upload Image</b></label> <br>
+            <input id="files-upload" type="file">
+            <img id="uploadImg" ng-modal="imageSrc"  ng-src="{{imageSrc}}" style="width:100px;">
+ </div > <br>
+
+    </form> <br>
+            <button ng-click="insertRecords()" class="btn btn-default">save</button>
+            <button ng-click="showRecord()" class="btn btn-success">Show Record</button>
+            <input type="submit" class="btn btn-primary" value="update" ng-click="updateContact()">
+            <input type="submit" class="btn btn-danger" value="Drop" ng-click="dropTable()">
+    </div> <br> <br>
+            <table width="100%" border="1">
+        <th>Id</th>
+        <th>username</th>
+        <th>lastname</th>
+        <th>useremail</th>
+        <th>usercemail</th>
+        <th>password</th>
+        <th>cpassword</th>
+        <th>date</th>
+        <th>gender</th>
+        <th>hobbies</th>
+        <th>Uploaded image</th>
+
+        <tr ng-repeat = "users in master" ng-class-even="'even'" ng-class-odd="'odd'">
+            <td class="row">{{users.id}}.</td>
+            <td>{{users.username|uppercase}}</td>
+            <td>{{users.lastname}}</td>
+            <td>{{users.useremail}}</td>
+            <td>{{users.usercemail}}</td>
+            <td>{{users.password}}</td>
+            <td>{{users.cpassword}}</td>
+            <td>{{users.date}}</td>
+            <td>{{users.gender}}</td>
+            <td>{{users.hobbies}}</td>
+            <td><img ng-src="{{users.image}}" style="width:90px;"></td>
+
+            <td> <button class="btn btn-primary" ng-click="editContact(users.id)">Edit</button>
+                <button class="btn btn-danger" ng-click="deleteContact(users.id)">Delete</button></td>
+
+        </tr>
+    </table>
+<script src="/home/manusis/database angular/database angular/js/fileUpload.js"></script>
+  </div>
+
+</body>
+</html>
